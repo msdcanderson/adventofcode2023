@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "python-template"
+name = "adventofcode2023"
 version = "0.1.0"
 description = ""
 authors = ["Michael Anderson <michael.anderson@banksearch-consultancy.com>"]
@@ -17,4 +17,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.bandit]
-skips = ["B404", "B603"]
+

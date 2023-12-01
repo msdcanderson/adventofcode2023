@@ -17,3 +17,8 @@ poetry install
 poetry shell
 pre-commit install
 ```
+
+## For your project
+
+- Change folder name to your project name
+- Change pyproject.toml > `name` to your project name

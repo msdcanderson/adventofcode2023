@@ -1,4 +1,4 @@
-input_text = """eightqrssm9httwogqshfxninepnfrppfzhsc
+input = """eightqrssm9httwogqshfxninepnfrppfzhsc
 one111jxlmc7tvklrmhdpsix
 bptwone4sixzzppg
 ninezfzseveneight5kjrjvtfjqt5nineone
@@ -997,4 +997,5 @@ sixthree6lxcrsevenseven69twonegs
 2dcvcqcbpshsixone3
 drkdbmv4zbjbznsqtj
 eightbqfhnmvqsoneninezbrzcqkz4ftv
-1eightcrcjcbdthreebscfpvznqfrj6"""
+1eightcrcjcbdthreebscfpvznqfrj6
+"""

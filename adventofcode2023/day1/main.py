@@ -1,7 +1,7 @@
 import re
 from typing import List
 from word2number import w2n
-from input import input
+from .input import input
 
 # from input_sample import input
 
@@ -10,29 +10,16 @@ from input import input
 lines = input.splitlines()
 
 
-def number_by_position(list_of_numbers: List[str], position: int) -> str:
-    number = list_of_numbers[position]
-    return number
-
-
-def convert_string_to_number(number: str) -> str:
-    if number.isdigit():
-        return number
+def word_or_digit_to_digit(word: str, position: int) -> str:
+    if word.isdigit():
+        number_str = word
+        if position == -1:
+            return number_str[-1]
+        else:
+            return number_str[0]
     else:
-        number = str(w2n.word_to_num(number))
-        return number
-
-
-def convert_string_to_single_number_as_string(matches: List[str], position: int) -> str:
-    # print(matches)
-    number: str = number_by_position(matches, position)
-    # print(number)
-    number = convert_string_to_number(number)
-    # print(number)
-    number = number[position]
-    # print(number)
-    # number: int = int(number)
-    return number
+        number_str = str(w2n.word_to_num(word))
+        return number_str
 
 
 pattern = r"(\d+|one|two|three|four|five|six|seven|eight|nine)"
@@ -42,10 +29,10 @@ sum_calibration_value = 0
 for line in lines:
     matches: List[str] = re.findall(pattern, line)
 
-    first_number: str = convert_string_to_single_number_as_string(matches, 0)
+    first_number: str = word_or_digit_to_digit(matches[0], 0)
     # print(first_number)
 
-    last_number: str = convert_string_to_single_number_as_string(matches, -1)
+    last_number: str = word_or_digit_to_digit(matches[-1], -1)
     # print(last_number)
 
     calibration_value: int = int(first_number + last_number)
@@ -57,6 +44,31 @@ for line in lines:
     )
 
 print(f"Calibration value: {sum_calibration_value}")
+
+
+# def number_by_position(list_of_numbers: List[str], position: int) -> str:
+#     number = list_of_numbers[position]
+#     return number
+
+
+# def convert_string_to_number(number: str) -> str:
+#     if number.isdigit():
+#         return number
+#     else:
+#         number = str(w2n.word_to_num(number))
+#         return number
+
+
+# def convert_string_to_single_number_as_string(matches: List[str], position: int) -> str:
+#     # print(matches)
+#     number: str = number_by_position(matches, position)
+#     # print(number)
+#     number = convert_string_to_number(number)
+#     # print(number)
+#     number = number[position]
+#     # print(number)
+#     # number: int = int(number)
+#     return number
 
 
 # print(convert_string_to_single_number_as_string(matches, 1))

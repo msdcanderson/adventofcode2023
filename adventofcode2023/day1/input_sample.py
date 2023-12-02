@@ -1,4 +1,4 @@
-input = """two1nine
+input_text = """two1nine
 eightwothree
 abcone2threexyz
 xtwone3four

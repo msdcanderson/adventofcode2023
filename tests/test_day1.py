@@ -1,27 +1,23 @@
 import pytest
-from adventofcode2023.day1.main import word_or_digit_to_digit
+from adventofcode2023.day1.day1 import LineWithNumbersInAString
 
 
-# Test with digit inputs
-def test_with_digit_input() -> None:
-    assert word_or_digit_to_digit("123", 0) == "1"
-    assert word_or_digit_to_digit("123", -1) == "3"
+class TestLineWithNumbersInAString:
+    pattern: str = r"(\d+|one|two|three|four|five|six|seven|eight|nine)"
 
-
-# Test with word inputs
-def test_with_word_input() -> None:
-    assert word_or_digit_to_digit("one", 0) == "1"
-    assert word_or_digit_to_digit("twenty", 0) != "2"
-
-
-# Test with invalid inputs
-def test_with_invalid_input() -> None:
-    with pytest.raises(ValueError):
-        word_or_digit_to_digit("invalid", 0)
-
-
-# Test with edge cases
-def test_edge_cases() -> None:
-    assert word_or_digit_to_digit("0", 0) == "0"
-    assert word_or_digit_to_digit("0", -1) == "0"
-    assert word_or_digit_to_digit("ten", 0) == "10"
+    @pytest.mark.parametrize(
+        "line, expected",
+        [
+            # Add test cases here:
+            ("twooneightgt", ["two", "one", "eight"]),
+            (
+                "ddgjgcrssevensix37twooneightgt",
+                ["seven", "six", "37", "two", "one", "eight"],
+            ),
+            ("eightwothree", ["eight", "two", "three"]),
+            ("29", ["29"]),
+        ],
+    )  # type: ignore
+    def test_list_numbers_in_line(self, line: str, expected: list[str]) -> None:
+        line_with_numbers = LineWithNumbersInAString(line, self.pattern)
+        assert line_with_numbers.list_numbers_in_line() == expected

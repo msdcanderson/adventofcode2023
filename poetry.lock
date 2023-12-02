@@ -194,7 +194,17 @@ platformdirs = ">=3.9.1,<5"
 docs = ["furo (>=2023.7.26)", "proselint (>=0.13)", "sphinx (>=7.1.2)", "sphinx-argparse (>=0.4)", "sphinxcontrib-towncrier (>=0.2.1a0)", "towncrier (>=23.6)"]
 test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7)", "packaging (>=23.1)", "pytest (>=7.4)", "pytest-env (>=0.8.2)", "pytest-freezer (>=0.4.8)", "pytest-mock (>=3.11.1)", "pytest-randomly (>=3.12)", "pytest-timeout (>=2.1)", "setuptools (>=68)", "time-machine (>=2.10)"]
 
+[[package]]
+name = "word2number"
+version = "1.1"
+description = "Convert number words eg. three hundred and forty two to numbers (342)."
+optional = false
+python-versions = "*"
+files = [
+    {file = "word2number-1.1.zip", hash = "sha256:70e27a5d387f67b04c71fbb7621c05930b19bfd26efd6851e6e0f9969dcde7d0"},
+]
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "5b27623590afd7dd3a5588adb1f642ad1a07d21fc2f23dbe10df66b447ab0a46"
+content-hash = "91d654ee7de80fac42491e101c73fe6a93621fa881402d39d47d83cce41d7b92"

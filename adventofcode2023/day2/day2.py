@@ -2,7 +2,7 @@ import logging
 
 # Set up logging
 logging.basicConfig(
-    level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s"
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
 
@@ -59,7 +59,7 @@ class Game:
         else:
             return "not possible"
 
-    def process(self, colour: str) -> None:
+    def process_colour(self, colour: str) -> str:
         number_of_balls_by_colour = self.extract_number_of_balls_by_colour(colour)
         logging.debug(
             f"Number of {colour} balls in the clues: {number_of_balls_by_colour}"
@@ -87,6 +87,18 @@ class Game:
             number_of_colour_balls_in_bag, max_number_of_balls_by_colour_in_clues
         )
         logging.debug(f"{colour} is {largest_number}")
+        return largest_number
+
+    def process(self) -> None:
+        possible = True
+        for colour in self.BALL_COLOURS:
+            if self.process_colour(colour) == "possible":
+                possible = True
+            else:
+                possible = False
+                break
+        logging.info(f"It is possible the game could be played? {possible}")
+        # return possible
 
     # get the number of balls in the bag by colour
     # find the max number for all reds, blues, and greens
@@ -96,7 +108,7 @@ class Game:
 def main() -> None:
     game1 = Game(
         balls_in_bag={"red": 10, "blue": 11, "green": 12},
-        first_clue={"red": 1, "blue": 2, "green": 20},
+        first_clue={"red": 1, "blue": 2, "green": 10},
         second_clue={"red": 4, "blue": 5, "green": 6},
         third_clue={"red": 7, "blue": 8, "green": 9},
     )
@@ -104,9 +116,10 @@ def main() -> None:
     # first_clue={"red": 1, "blue": 2, "green": 3}
     # logging.info(game1.extract_number_of_balls_by_colour_from_clue(first_clue,"red"))
     # logging.info(game1.extract_number_of_balls_by_colour(colour="red"))
-    game1.process(colour="red")
-    game1.process(colour="blue")
-    game1.process(colour="green")
+    # game1.process(colour="red")
+    # game1.process(colour="blue")
+    # game1.process(colour="green")
+    game1.process()
 
     # logging.info(game1.extract_number_of_balls_by_colour_from_clue("blue"))
     # logging.info(game1.extract_number_of_balls_by_colour_from_clue("green"))
